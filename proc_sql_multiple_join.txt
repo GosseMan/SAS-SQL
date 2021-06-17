@@ -1,0 +1,10 @@
+proc sql ;
+	create table _01_esrd_dial_codes as 
+	select distinct a.*, b.code,c.code as c_code
+	from _01_pt as a
+	left join dataset1 as b 
+	on a.enrolid = b.enrolid
+        left join dataset2 as c
+        on a.enrolid=c.enrolid;
+quit;
+20개까지 가능

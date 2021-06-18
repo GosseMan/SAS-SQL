@@ -1,10 +1,10 @@
-ref) Why choose between SAS Data Step and PROC SQL when you can have both?
+# SAS Data step vs PROC SQL
+reference) Why choose between SAS Data Step and PROC SQL when you can have both? (SAS)
 
-SAS data step vs proc sql 
-1. Reading raw data
+#####1. Reading raw data
 SAS의 data step은 raw data를 읽을 수 있다.
 
-2. Joining data
+#####2. Joining data
 SAS data step merge
 : merging technique 사용
 
@@ -12,7 +12,6 @@ PROC SQL
 : join algorithm 사용
 
 PROC SQL이 유연하게 사용 가능하다(join하는 column이 같은 이름이 아니어도 됨, join 조건이 equality가 아니어도 됨, pre-sorted data가 아니어도 됨)
-
 
 비교(sas data step merge vs proc sql)
 
@@ -28,11 +27,13 @@ same name variables : Same named BY variables must be available in
 all data sets vs Same named variables do not
 have to be in all data sets.
 
-3. Accumulating data
+#####3. Accumulating data
 SAS data step이 + 기호 사용만으로 훨씬 간단하게 수행 가능.
 PROC SQL의 경우 row number를 나타내는 _n_을 이용해서 더 복잡하게 수행 가능.
 
 SAS data step example code
+<pre>
+<code>
 Data step accumulating data
 data dsrunning;
 set shoes;
@@ -40,8 +41,12 @@ keep region product sales
 running_total;
 running_total + sales;
 run;
+</code>
+</pre>
 
 PROC SQL example code
+<pre>
+<code>
 Proc sql accumulating data
 data shoes;
 set sashelp.shoes;
@@ -54,11 +59,15 @@ select region, product, sales,
 where a.obs <= b.obs) as Running_total
 from shoes as b;
 quit;
+</code>
+</pre>
 
-4. Aggregating data
+#####4. Aggregating data
 PROC SQL이 boolean 방식으로 logic을 표현하기 용이하다.
 
 SAS data step example code
+<pre>
+<code>
 Data step aggregating data
 /*1. prep data for summarizing*/
 data dsboolean;
@@ -77,8 +86,12 @@ label wgt4000 ='over average weight'
  wle2500 ='under average weight';
 keep visit wgt4000 wle2500;
 run;
+</code>
+</pre>
 
 PROC SQL example code
+<pre>
+<code>
 Proc Sql aggregating data
 proc sql;
 create table sqlboolean as
@@ -92,21 +105,31 @@ average weight'
 from sashelp.bweight
 group by visit;
 quit;
+</code>
+</pre>
 
-5. Managing data
+#####5. Managing data
 PROC SQL의 dictionary table을 이용하면 metadata를 빠르게 가져올 수 있다.
 
 SAS data step example code
+<pre>
+<code>
 proc sql;
 select libname, memname, name, type, length
 from dictionary.columns
 where upcase(name) contains 'ID'
 and libname='SASHELP' and type='num';
 quit;
+</code>
+</pre>
 
 PROC SQL example code
+<pre>
+<code>
 data dsdict;
 set sashelp.vcolumn;
 keep libname memname name type length;
 where upcase(name) contains 'ID' and libname='SASHELP' and type='num';
 run;
+</code>
+</pre>

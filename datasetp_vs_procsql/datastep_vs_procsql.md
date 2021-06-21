@@ -1,10 +1,10 @@
 # SAS Data step vs PROC SQL
 reference) Why choose between SAS Data Step and PROC SQL when you can have both? (SAS)
 
-#####1. Reading raw data
+##### 1. Reading raw data
 SAS의 data step은 raw data를 읽을 수 있다.
 
-#####2. Joining data
+##### 2. Joining data
 SAS data step merge
 : merging technique 사용
 
@@ -27,7 +27,7 @@ same name variables : Same named BY variables must be available in
 all data sets vs Same named variables do not
 have to be in all data sets.
 
-#####3. Accumulating data
+##### 3. Accumulating data
 SAS data step이 + 기호 사용만으로 훨씬 간단하게 수행 가능.
 PROC SQL의 경우 row number를 나타내는 _n_을 이용해서 더 복잡하게 수행 가능.
 
@@ -62,7 +62,7 @@ quit;
 </code>
 </pre>
 
-#####4. Aggregating data
+##### 4. Aggregating data
 PROC SQL이 boolean 방식으로 logic을 표현하기 용이하다.
 
 SAS data step example code
@@ -99,7 +99,7 @@ select visit,
 sum(weight > 4000 and married=1
 and momsmoke=1) as wgt4000 'over
 average weight',
-sum(weight <=2500 and married=1
+sum(weight <=2500 and married=1Cancel changes
 and momsmoke=1) as wle2500 'under
 average weight'
 from sashelp.bweight
@@ -108,7 +108,7 @@ quit;
 </code>
 </pre>
 
-#####5. Managing data
+##### 5. Managing data
 PROC SQL의 dictionary table을 이용하면 metadata를 빠르게 가져올 수 있다.
 
 SAS data step example code

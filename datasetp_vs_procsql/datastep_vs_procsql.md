@@ -16,15 +16,18 @@ PROC SQL이 유연하게 사용 가능하다(join하는 column이 같은 이름�
 비교(sas data step merge vs proc sql)
 
 데이터셋 크기 : 디스크 공간 외의 제약이 없음 vs 최대 256 table  
-데이터 처리 : sequential so that observations with duplicate  
-BY values are joined one-to-one. vs Cartesian product for duplicate BY values.
+
+데이터 처리 : sequential so that observations with duplicate BY values are joined one-to-one. vs Cartesian product for duplicate BY values.
+
 출력 데이터셋 : 여러개 만들어질 수 있음 vs 하나만 만들어질 수 있음  
+
 complex logic : if then/select when 사용 vs case 사용(비교적 덜 유연함)  
+
 정렬 : 정렬이 필수 vs 필수가 아님  
+
 join 조건 : equality vs inequal join도 가능  
-same name variables : Same named BY variables must be available in  
-all data sets vs Same named variables do not  
-have to be in all data sets.
+
+same name variables : Same named BY variables must be available in all data sets vs Same named variables do not have to be in all data sets.
 
 ##### 3. Accumulating data
 SAS data step이 + 기호 사용만으로 훨씬 간단하게 수행 가능.  
